@@ -15,7 +15,7 @@ La documentación de la API se encuentra en la ruta http://localhost:8080/v3/api
 ####
 1. Clona el repositorio:
 ```
-git clone https://github.com/my-username/spring-boot-user-registration.git
+git clone https://github.com/camilitwo/demouser.git
 ```
 
 2. Ejecuta la API usando Maven:
