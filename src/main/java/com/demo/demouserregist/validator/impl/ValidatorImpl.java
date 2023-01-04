@@ -39,15 +39,17 @@ public class ValidatorImpl implements Validator {
             throw new UserException(ConstantsUtils.BODY_NULL);
         }
 
-        Optional.ofNullable(usuarioDto).filter(u -> Objects.nonNull(u.getName()) && !u.getName().isEmpty())
+        Optional.of(usuarioDto).filter(u -> Objects.nonNull(u.getName()) && !u.getName().isEmpty())
                 .orElseThrow(() -> new UserException(ConstantsUtils.NAME_NULL));
 
-        Optional.ofNullable(usuarioDto).filter(u -> Objects.nonNull(u.getEmail()) && !u.getEmail().isEmpty())
+        Optional.of(usuarioDto).filter(u -> Objects.nonNull(u.getEmail()) && !u.getEmail().isEmpty())
                 .orElseThrow(() -> new UserException(ConstantsUtils.EMAIL_NULL));
 
-        Optional.ofNullable(usuarioDto).filter(u -> Objects.nonNull(u.getPassword()) && !u.getPassword().isEmpty())
+        Optional.of(usuarioDto).filter(u -> Objects.nonNull(u.getPassword()) && !u.getPassword().isEmpty())
                 .orElseThrow(() -> new UserException(ConstantsUtils.PASSWORD_NULL));
 
+        this.validateEmail(usuarioDto);
+        this.validatePassword(usuarioDto);
     }
 
     @Override

@@ -36,11 +36,9 @@ public class UsuarioServiceImpl implements UsuarioService {
         GenericResponse response = new GenericResponse();
         try{
             validator.valildateObject(usuarioDto);
-            validator.validateEmail(usuarioDto);
-            validator.validatePassword(usuarioDto);
             Usuario usuario = new Usuario();
             BeanUtils.copyProperties(usuarioDto, usuario);
-            Optional.ofNullable(usuarioRepository.save(usuario)).ifPresent(user -> {
+            Optional.of(usuarioRepository.save(usuario)).ifPresent(user -> {
                 UserResponse userResponse = new UserResponse();
                 userResponse.setId(user.getUuid().toString());
                 userResponse.setCreated(new Date());
